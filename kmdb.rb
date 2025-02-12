@@ -295,4 +295,11 @@ puts ""
 # Query the cast data and loop through the results to display the cast output for each movie.
 # TODO!
 
+allrole = Role.all
+
+for role in allrole
+    movie = Movie.find_by({"id" => role["movie_id"]})
+    actor = Actor.find_by({"id" => role["actor_id"]})
+    puts "#{movie["title"]}" + (" " * (25 - movie["title"].size)) + "#{actor["name"]}" + (" " * (30 - actor["name"].size)) + "#{role["character_name"]}"
+end
 
